@@ -1,0 +1,26 @@
+Strategie von SP 1
+
+Es ist sehr wichtig, die gute Ausgangslage zu finden. Daher ist mein Strategie in drei Schritte aufgeteilt.
+Zuerst werden alle möglichen Schritte erzeugt, wobei einige Einschränkungen gelten. Bei einer 1 in einer
+Reihenfolge kann nur 0 oder 1 rauskommen. Bei einer 2 kann nur 0 oder 1 rauskommen. Sonst kann 0, 1 oder 2 rauskommen.
+So generiere ich für jede Reihe, die ungleich 0 ist, 1-3 mögliche Entscheidungen.
+
+Im zweiten Schritt werden die Möglicheiten nach folgendem Schema bewertet:
+a entspricht der Anzahl aller Reihen
+b entspricht der Anzahl der Reihen ungleich 0
+e entspricht der Anzahl der Reihen mit Einsen
+s ist eine Summe und zu beginn 0
+
+wenn b gerade ist
+	s wird um a-b erhöht
+	s wird um e erhöht
+sonst
+	s wird um (a-b-3) erhöht
+	s wird um e verringert
+	
+Dadurch erhalte ich eine Punktzahl, die bestimmt wie gut eine Möglichkeit ist.
+Eine ungerade Anzahl an Reihen ungleich 0 ist also sehr gut, insbesondere wenn darin Einsen sind.
+Eine unge Anzahl an Reihen ungleich 0 ist schlecht und noch schlimmer, wenn Einsen darin vorkommen.
+
+Die beste Entscheidung wird im dritten Schritt ermittelt und ausgeführt. Bei mehreren gleichguten
+kann eine beliebige (ggf. die erste) ausgewählt werden.

@@ -1,0 +1,17 @@
+Aufgaben Analyse
+
+Es soll die Simulation eines Zwei-Personen-Spiels mit dem Namen Nim umgesetzt werden.
+Dabei werden aus mehreren Reihen, aber mindestens 1 und maximal 9, Streichhölzer gezogen.
+Ein Zug darf immer nur 1-n Hölzer aus einer Reihe ziehen, die n Hölzer hat.
+Die Reihenfolge der vertikal angeordneten Reihen ist nicht relevant, da ja eine beliebige ausgewählt wird.
+
+Der Spieler, welcher die letzten Hölzchen zieht, gewinnt.Daher muss eine Strategie für Spieler 1
+entwickelt werden, die eine möglichst gute Ausgangslage schafft. Spieler 2 ist durch den Zufall gesteuert,
+solange er nicht sofort gewinnen kann.
+Berücksichtigt werden müssen auch Spielfehler, dass kein Hölzchen genommen wurde oder aus mehreren Reihen.
+Wie eine möglichst gute Ausgangslage aussieht ist nicht näher definiert. Daher muss eine Strategie
+entworfen werden, die diese erzeugt bzw. findet. Ein Spiel wird 10mal durchgeführt und es gibt in jeder
+Runde einen Sieger. Am Ende wird eine kurze Statistik ausgeben.
+
+Das Programm kann grob in ein Model, eine View und einen Controller unterteilt werden.
+Dabei sind alle Daten im Model gespeichert, die Ausgabe erfolgt über die View und der COntroller nimmt alle Berechnungen vor.
