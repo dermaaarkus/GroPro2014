@@ -1,0 +1,11 @@
+package model;
+
+public abstract class AbstractStrategy {
+	/**
+	 * Bestimmt den nächsten Spielzug der Strategie.
+	 * 
+	 * @param gameState Der aktuelle Spielstatus
+	 * @return Den nächsten Spielstatus
+	 */
+	public abstract GameState getNextGameState(GameState gameState);
+}

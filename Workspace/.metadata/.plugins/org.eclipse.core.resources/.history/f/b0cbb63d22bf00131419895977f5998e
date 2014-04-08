@@ -1,0 +1,8 @@
+package model;
+
+import controller.strategy.AbstractStrategy;
+
+public class Player {
+	private PlayerStatistics statistics;
+	private AbstractStrategy strategy;
+}

@@ -1,0 +1,5 @@
+package view;
+
+public abstract class OutputWriter {
+	public abstract void write();
+}

@@ -1,0 +1,15 @@
+package model;
+
+import controller.strategy.AbstractStrategy;
+
+public class Player {
+	private PlayerStatistics statistics;
+	private AbstractStrategy strategy;
+	
+	public Player(AbstractStrategy strategy) {
+		this.statistics = new PlayerStatistics();
+		this.strategy = strategy; 
+	}
+
+
+}

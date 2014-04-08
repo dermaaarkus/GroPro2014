@@ -1,0 +1,85 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class GameState {
+
+	/**
+	 * Speichert die Reihen in einem Spielstatus.
+	 */
+	private List<Integer> columns;
+	
+	/**
+	 * Konstruktur.
+	 * 
+	 * @param columns Die Reihen, die gespeichert werden sollen
+	 * @throws NullPointerException Wenn columns null ist kann das Objekt nicht initialisiert werden
+	 */
+	public GameState(List<Integer> columns) {
+		if(columns != null)
+		{
+			this.columns = columns;
+		} else {
+			throw new NullPointerException("Argument darf nicht null sein!");
+		}
+	}
+	
+	/**
+	 * Kopier-Konstruktor.
+	 * 
+	 * @param gameState Der zu kopierende Spielstatus
+	 * @throws NullPointerException Wenn columns null ist kann das Objekt nicht initialisiert werden
+	 */
+	public GameState(GameState gameState) {
+		if(gameState != null)
+		{
+			List<Integer> otherColumns = gameState.getColumns();
+			
+			/* Hier wird eine ArrayList genommen, weil das Interface List<E> ja unterschiedlich implementiert  sein kann.
+			 * Hier ist es aber egal, da weiterhin mit dem Interface gearbeitet wird. */
+			this.columns = new ArrayList<Integer>(otherColumns.size());
+			Collections.copy(this.columns, otherColumns);
+		} else {
+			throw new NullPointerException("Argument darf nicht null sein!");
+		}
+	}
+	
+	public List<Integer> getColumns() {
+		return columns;
+	}
+	
+	public void changeValueOfColumn(int c, int v) {
+		columns.set(c, v);
+	}
+	
+	public int numberOfColumns() {
+		return columns.size();
+	}
+	
+	/**
+	 * Prüft, ob das Objekt ein Spielende repräsentiert.
+	 * 
+	 * @return true wenn es das Ende ist
+	 */
+	public boolean isFinishState() {
+		boolean finished = true;
+		
+		for(Integer i : columns)
+		{
+			if(i != 0)
+			{
+				finished = false;
+				break;
+			}
+		}
+		
+		return finished;
+	}
+	
+	public String toString() {
+		// TODO
+		return "";
+	}
+}

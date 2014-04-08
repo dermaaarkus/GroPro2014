@@ -1,0 +1,66 @@
+package model;
+
+public abstract class AbstractStrategy {
+	/**
+	 * Bestimmt den nächsten Spielzug der Strategie.
+	 * 
+	 * @param gameState Der aktuelle Spielstatus
+	 * @return Den nächsten Spielstatus
+	 * @throws InvalidArgumentException Falls der Spielstatus das Ende eines Spiels repräsentiert
+	 */
+	public GameState getNextGameState(GameState gameState) {
+		if(gameState.isFinishState()) {
+			throw new IllegalArgumentException("Es kann kein weiterer Spielzug durchgeführt werden.");
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Zählt die Anzahl der Reihen eines Spielstatus, die nicht 0 sind.
+	 * 
+	 * @param gameState Der zu analysierende Spielstatus
+	 * @return Die Anzahl der Reihen, die nicht 0 sind
+	 */
+	private static int countValidColumns(GameState gameState) {
+		int counter = 0;
+		
+		for(int i : gameState.getColumns()) {
+			if(i != 0) {
+				++counter;
+			}
+		}
+		
+		return counter;
+	}
+	
+	/**
+	 * Zählt die Anzahl der Reihen eines Spielstatus, die 1 sind.
+	 * 
+	 * @param gameState Der zu analysierende Spielstatus
+	 * @return Die Anzahl der Reihen, die 1 sind
+	 */
+	private static int countOnes(GameState gameState) {
+		int counter = 0;
+		
+		for(int i : gameState.getColumns()) {
+			if(i == 1) {
+				++counter;
+			}
+		}
+		
+		return counter;
+	}
+	
+	private Possibility getBestRatedPossibility() {
+		Possibility bestRatedPossibility = null;
+		
+		for(int i : ) {
+			if(i == 1) {
+				++counter;
+			}
+		}
+		
+		return counter;
+	}
+}

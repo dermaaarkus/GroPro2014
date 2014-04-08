@@ -1,0 +1,38 @@
+package model;
+
+public class Model extends AbstractModel {
+
+	private Player player1;
+	private Player player2;
+	private String comment;
+	private GameState firstGameState;
+	
+	public Model() {
+		
+	}
+	
+	@Override
+	public Player getPlayer1() {
+		// TODO Auto-generated method stub
+		return player1;
+	}
+
+	@Override
+	public Player getPlayer2() {
+		// TODO Auto-generated method stub
+		return player2;
+	}
+
+	@Override
+	public String getComment() {
+		// TODO Auto-generated method stub
+		return comment;
+	}
+
+	@Override
+	public GameState getGameState() {
+		// TODO Auto-generated method stub
+		return firstGameState;
+	}
+
+}

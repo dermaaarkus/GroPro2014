@@ -1,0 +1,5 @@
+package model;
+
+public abstract class AbstractStrategy {
+	public GameState getNextGameState(GameState gameState);
+}
