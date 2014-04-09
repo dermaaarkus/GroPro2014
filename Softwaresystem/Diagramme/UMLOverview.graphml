@@ -151,7 +151,7 @@ comment: String, firstGameState: GameState)
             </y:ModelParameter>
           </y:NodeLabel>
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
-            <y:AttributeLabel>- possibilities: List&lt;Possibilities&gt;</y:AttributeLabel>
+            <y:AttributeLabel>- possibilities: List&lt;Possibility&gt;</y:AttributeLabel>
             <y:MethodLabel>&lt;html&gt;+ getNextGameState(gameState: GameState): GameState&lt;br&gt;
 - &lt;u&gt;countValidColumns&lt;/u&gt;(gameState: GameState): int&lt;br&gt;
 - &lt;u&gt;countOnes&lt;/u&gt;(gameState: GameState): int&lt;br&gt;

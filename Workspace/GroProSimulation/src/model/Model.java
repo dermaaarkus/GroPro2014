@@ -1,11 +1,29 @@
 package model;
 
 public class Model extends AbstractModel {
-
+	/**
+	 * Spieler 1
+	 */
 	private Player player1;
+	
+	/**
+	 * Spieler 2
+	 */
 	private Player player2;
+	
+	/**
+	 * Der erste Spielstatus
+	 */
 	private GameState firstGameState;
+	
+	/**
+	 * Kommentar
+	 */
 	private String comment;
+	
+	/**
+	 * Eine Warnung
+	 */
 	private String warning;
 	
 	public Model(Player player1, Player player2, GameState firstGameState, String comment, String warning) {

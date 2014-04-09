@@ -8,7 +8,7 @@ public abstract class AbstractStrategy {
 	 * 
 	 * @param gameState Der aktuelle Spielstatus
 	 * @return Den nächsten Spielstatus
-	 * @throws InvalidArgumentException Falls der Spielstatus das Ende eines Spiels repräsentiert
+	 * @throws InvalidArgumentException Falls der übergebene Spielstatus bereits das Ende eines Spiels repräsentiert
 	 */
 	public GameState getNextGameState(GameState gameState) {
 		if(gameState.isFinishState()) {

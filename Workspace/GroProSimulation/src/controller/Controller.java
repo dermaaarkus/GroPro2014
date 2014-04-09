@@ -1,19 +1,15 @@
 package controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 import controller.strategy.*;
-import view.InputFileReader;
-import view.OutputFileWriter;
+import view.*;
 import model.*;
 
 public class Controller {
 	private AbstractModel model;
-	private OutputFileWriter view;
+	private OutputWriter view;
 	
 	/**
 	 * Erzeugt einen Controller.
@@ -44,7 +40,7 @@ public class Controller {
 	}
 	
 	/**
-	 * Führt eine beliebige Anzahl Spiele durch.
+	 * Führt eine beliebige Anzahl Spiele durch und erstellt eine Statistik.
 	 * 
 	 * @param numberOfGames Die Anzahl der durchzuführenden Spiele
 	 */

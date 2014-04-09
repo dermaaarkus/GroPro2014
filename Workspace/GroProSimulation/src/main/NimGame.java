@@ -6,6 +6,15 @@ import java.util.InputMismatchException;
 import controller.Controller;
 
 public class NimGame {
+	/**
+	 * Die Anzahl an durchzuführenden Spielen.
+	 */
+	public static int NUMBER_OF_GAMES = 10;
+	
+	/**
+	 * Führt eine Anzahl von Nimspielen durch. 
+	 * @param args 0: Die Eingabedatei 1: Die Ausgabedatei
+	 */
 	public static void main(String[] args) {
 		String in, out;
 		
@@ -13,14 +22,14 @@ public class NimGame {
 			in = args[0];
 			out = args[1];
 		} else {
-			// TODO: nur zu testzwecken
-			in = "resources/input/ihk_example.in";
-			out = "resources/output/ihk_example.out";
+			// TODO: nur zu debug- und testzwecken
+			in = "resources/input/debug_example.in";
+			out = "resources/output/debug_example.out";
 		}
 		
 		try {
 			Controller c = new Controller(new File(in), new File(out));
-			c.playGames(10);
+			c.playGames(NUMBER_OF_GAMES);
 		} catch(InputMismatchException ime) {
 			// ignore, because the error is already written to view
 		} catch (Exception e) {

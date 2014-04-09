@@ -1,11 +1,11 @@
 # Example - Multiple Spaces
 Startverteilung: (1,2,3)
-Gewonnene Spiele Spieler 1: 70 %
-Gewonnene Spiele Spieler 2: 30 %
+Gewonnene Spiele Spieler 1: 90 %
+Gewonnene Spiele Spieler 2: 10 %
 Beispiel eines von Spieler 1 gewonnenen Spiels:
 Zug  0, Spieler 1 : (1,2,3) -> (1,0,3)
-Zug  1, Spieler 2 : (1,0,3) -> (0,0,3)
-Zug  2, Spieler 1 : (0,0,3) -> (0,0,0)
+Zug  1, Spieler 2 : (1,0,3) -> (1,0,0)
+Zug  2, Spieler 1 : (1,0,0) -> (0,0,0)
 Beispiel eines von Spieler 2 gewonnenen Spiels:
 Zug  0, Spieler 1 : (1,2,3) -> (1,0,3)
 Zug  1, Spieler 2 : (1,0,3) -> (1,0,1)

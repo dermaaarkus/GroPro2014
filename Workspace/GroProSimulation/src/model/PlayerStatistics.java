@@ -6,6 +6,9 @@ public class PlayerStatistics {
 	public int wonGames;
 	public List<GameState> wonGame;
 	
+	/**
+	 * Erzeugt ein neuen Player-Objekt.
+	 */
 	public PlayerStatistics()
 	{
 		wonGames = 0;

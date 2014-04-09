@@ -1,0 +1,11 @@
+package model;
+
+
+public class Possibility {
+	public GameState gameState;
+	public int rating;
+	
+	public Possibility(GameState gameState) {
+		this.gameState = gameState;
+	}
+}

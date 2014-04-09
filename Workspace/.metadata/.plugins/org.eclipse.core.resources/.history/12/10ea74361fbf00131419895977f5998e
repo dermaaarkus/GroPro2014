@@ -1,8 +1,0 @@
-package utility;
-
-import model.GameState;
-
-public abstract class InputReader {
-	public abstract String getComment();
-	public abstract GameState getFirstGameState();
-}

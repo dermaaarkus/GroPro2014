@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.GameState;
+import model.Possibility;
 
 public class MyStrategy extends AbstractStrategy {
 	/**
@@ -95,7 +96,7 @@ public class MyStrategy extends AbstractStrategy {
 	}
 	
 	/**
-	 * Sucht die beste Möglichkeit. Bei mehreren geich guten Möglichkeiten wird die Erste genommen.
+	 * Sucht die beste Möglichkeit. Bei mehreren geich guten Möglichkeiten wird die zuerst gefundene ausgewählt.
 	 */
 	private Possibility getBestRatedPossibility() {
 		Possibility bestRatedPossibility = null;
