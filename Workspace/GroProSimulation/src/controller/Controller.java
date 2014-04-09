@@ -3,10 +3,11 @@ package controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import controller.strategy.*;
-import utility.InputFileReader;
+import view.InputFileReader;
 import view.OutputFileWriter;
 import model.*;
 
@@ -14,15 +15,39 @@ public class Controller {
 	private AbstractModel model;
 	private OutputFileWriter view;
 	
+	/**
+	 * Erzeugt einen Controller.
+	 * 
+	 * @param inputFile Die Eingabedatei aus der gelesen werden soll
+	 * @param outputFile Die Ausgabedatei in die geschrieben werden soll
+	 * @throws FileNotFoundException Falls eine Datei nicht gefunden wird
+	 * @throws InputMismatchException Falls die Eingabedaten nicht korrigierbare Fehler beinhalten
+	 */
 	public Controller(File inputFile, File outputFile) throws FileNotFoundException {
 		Player player1 = new Player(new MyStrategy());
 		Player player2 = new Player(new RandomStrategy());
 		InputFileReader inputFileReader = new InputFileReader(inputFile);
-		
-		model = new Model(player1, player2, inputFileReader.getComment(), inputFileReader.getFirstGameState());
 		view = new OutputFileWriter(outputFile);
+		
+		String comment;
+		GameState gamestate;
+		
+		try {
+			comment = inputFileReader.getComment();
+			gamestate = inputFileReader.getFirstGameState();
+		} catch(InputMismatchException e) {
+			view.append("Fehler: " + e.getMessage());
+			throw e;
+		}
+		
+		model = new Model(player1, player2,  gamestate, comment, inputFileReader.getWarning());
 	}
 	
+	/**
+	 * Führt eine beliebige Anzahl Spiele durch.
+	 * 
+	 * @param numberOfGames Die Anzahl der durchzuführenden Spiele
+	 */
 	public void playGames(int numberOfGames)
 	{
 		List<GameState> game;
@@ -32,7 +57,7 @@ public class Controller {
 		{
 			game = playGame();
 			
-			if(game.size() % 2 == 0) // länge der liste gerade?
+			if(game.size() % 2 == 0) // ist länge der liste gerade?
 			{
 				winningPlayer = model.getPlayer1();
 			} else {
@@ -43,10 +68,24 @@ public class Controller {
 		}
 		
 		// write to view
-		view.write(model.getComment(), model.getPlayer1().getStatistics(), model.getPlayer2().getStatistics());
+		view.write(model.getComment(),
+				model.getPlayer1().getStatistics(),
+				model.getPlayer2().getStatistics());
+		
+		String warning = model.getWarning();
+		
+		if(warning != null) {
+			view.append("\n\n" + warning);			
+		}
 	}
 	
-	public List<GameState> playGame() {
+	
+	/**
+	 * Führt ein einzelnes Spiel durch. 
+	 * 
+	 * @return Gibt die Spielzüge als Liste zurück, die den Spielverlauf abbildet
+	 */
+	private List<GameState> playGame() {
 		Player player1 = model.getPlayer1();
 		Player player2 = model.getPlayer2();
 		
@@ -54,7 +93,6 @@ public class Controller {
 		GameState state = model.getFirstGameState();
 		List<GameState> game = new ArrayList<GameState>();
 		game.add(state); // fuege start status hinzu
-		
 		
 		while(state.isFinishState() == false) {
 			if(counter % 2 == 1) // ist counter ungerade?

@@ -1,0 +1,100 @@
+package controller;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+
+import controller.strategy.*;
+import view.OutputFileWriter;
+import model.*;
+
+public class Controller {
+	private AbstractModel model;
+	private OutputFileWriter view;
+	
+	/**
+	 * Erzeugt einen Controller.
+	 * 
+	 * @param inputFile Die Eingabedatei aus der gelesen werden soll
+	 * @param outputFile Die Ausgabedatei in die geschrieben werden soll
+	 * @throws FileNotFoundException Falls eine Datei nicht gefunden wird
+	 * @throws InputMismatchException Falls die Eingabedaten nicht korrigierbare Fehler beinhalten
+	 */
+	public Controller(File inputFile, File outputFile) throws FileNotFoundException {
+		Player player1 = new Player(new MyStrategy());
+		Player player2 = new Player(new RandomStrategy());
+		InputFileReader inputFileReader = new InputFileReader(inputFile);
+		view = new OutputFileWriter(outputFile);
+
+		
+		try {
+			GameState gamestate = inputFileReader.getFirstGameState();
+			String comment = inputFileReader.getComment();
+			model = new Model(player1, player2,  gamestate, comment, inputFileReader.getWarning());			
+		} catch(InputMismatchException e) {
+			view.appendWarning(inputFileReader.getWarning());
+		}
+	}
+	
+	/**
+	 * Führt eine beliebige Anzahl Spiele durch.
+	 * 
+	 * @param numberOfGames Die Anzahl der durchzuführenden Spiele
+	 */
+	public void playGames(int numberOfGames)
+	{
+		List<GameState> game;
+		Player winningPlayer;
+		
+		for(int gameCounter = 0; gameCounter < numberOfGames; ++gameCounter)
+		{
+			game = playGame();
+			
+			if(game.size() % 2 == 0) // ist länge der liste gerade?
+			{
+				winningPlayer = model.getPlayer1();
+			} else {
+				winningPlayer = model.getPlayer2();
+			}
+			
+			winningPlayer.didWinGame(game);
+		}
+		
+		// write to view
+		view.write(model.getComment(),
+				model.getPlayer1().getStatistics(),
+				model.getPlayer2().getStatistics(),
+				model.getWarning());
+	}
+	
+	
+	/**
+	 * Führt ein einzelnes Spiel durch. 
+	 * 
+	 * @return Gibt die Spielzüge als Liste zurück, die den Spielverlauf abbildet
+	 */
+	private List<GameState> playGame() {
+		Player player1 = model.getPlayer1();
+		Player player2 = model.getPlayer2();
+		
+		int counter = 1;
+		GameState state = model.getFirstGameState();
+		List<GameState> game = new ArrayList<GameState>();
+		game.add(state); // fuege start status hinzu
+		
+		while(state.isFinishState() == false) {
+			if(counter % 2 == 1) // ist counter ungerade?
+			{
+				state = player1.getNextGameState(state);
+			} else {
+				state = player2.getNextGameState(state);
+			}
+			game.add(state); // fuege state zur liste hinzu
+			++counter;
+		}
+		
+		return game;
+	}
+}

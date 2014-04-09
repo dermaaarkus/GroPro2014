@@ -6,13 +6,17 @@ import java.util.List;
 import model.GameState;
 
 public class MyStrategy extends AbstractStrategy {
+	/**
+	 * Speichert die Möglichkeiten
+	 */
 	private List<Possibility> possibilities;
+	
 	
 	public MyStrategy() {
 		possibilities = new ArrayList<Possibility>();
 	}
 	
-	
+	@Override
 	public GameState getNextGameState(GameState gameState) {
 		super.getNextGameState(gameState);
 		
@@ -140,7 +144,5 @@ public class MyStrategy extends AbstractStrategy {
 		}
 		
 		return counter;
-	}
-	
-	
+	}	
 }

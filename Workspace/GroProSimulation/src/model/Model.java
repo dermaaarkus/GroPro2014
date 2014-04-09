@@ -4,14 +4,16 @@ public class Model extends AbstractModel {
 
 	private Player player1;
 	private Player player2;
-	private String comment;
 	private GameState firstGameState;
+	private String comment;
+	private String warning;
 	
-	public Model(Player player1, Player player2, String comment, GameState firstGameState) {
+	public Model(Player player1, Player player2, GameState firstGameState, String comment, String warning) {
 		this.player1 = player1;
 		this.player2 = player2;
-		this.comment = comment;
 		this.firstGameState = firstGameState;
+		this.comment = comment;
+		this.warning = warning;
 	}
 	
 	@Override
@@ -23,15 +25,19 @@ public class Model extends AbstractModel {
 	public Player getPlayer2() {
 		return player2;
 	}
-
-	@Override
-	public String getComment() {
-		return comment;
-	}
-
+	
 	@Override
 	public GameState getFirstGameState() {
 		return firstGameState;
 	}
 
+	@Override
+	public String getComment() {
+		return comment;
+	}
+	
+	@Override
+	public String getWarning() {
+		return warning;
+	}
 }

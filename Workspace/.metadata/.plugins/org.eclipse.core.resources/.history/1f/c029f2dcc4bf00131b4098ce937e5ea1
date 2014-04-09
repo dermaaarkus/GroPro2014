@@ -1,0 +1,38 @@
+package model;
+
+import java.io.FileNotFoundException;
+import java.util.*;
+
+public abstract class InputReader {
+	protected List<String> warnings;
+	
+	public abstract String getComment() throws FileNotFoundException;
+	public abstract GameState getFirstGameState()  throws FileNotFoundException;
+	
+	public InputReader() {
+		warnings =  new LinkedList<String>();
+	}
+	
+	/**
+	 * Prüft, ob Warnungen vorhanden sind.
+	 * 
+	 * @return true wenn Warnungen vorhanden sind
+	 */
+	public boolean hasWarnings() {
+		return warnings.size() > 0;
+	}
+	
+	
+	/**
+	 * Gibt aufgetretene Warnungen.
+	 * @return Aufgetretene Warnungen oder null, wenn es keine gab
+	 */
+	public List<String> getWarnings() {
+		if(hasWarnings()) {
+			return warnings;			
+		} else {
+			return null;
+		}
+	}
+	
+}

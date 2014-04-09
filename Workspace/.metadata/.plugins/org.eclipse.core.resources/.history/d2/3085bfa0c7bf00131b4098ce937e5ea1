@@ -1,0 +1,89 @@
+package model;
+
+import java.io.FileNotFoundException;
+import java.util.*;
+
+public abstract class InputReader {
+	/**
+	 * Die minimale Anzahl an Reihen.
+	 */
+	protected final int MINIMUM_NUMBER_OF_COLUMNS;
+	
+	/**
+	 * Die maximale Anzahl an Reihen.
+	 */
+	protected final int MAXIMUM_NUMBER_OF_COLUMNS;
+	
+	/**
+	 * Der minimale Wert einer Reihe.
+	 */
+	protected final int MINIMUM_COLUMN_VALUE;
+	
+	/**
+	 * Der maximale Wert einer Reihe.
+	 */
+	protected final int MAXIMUM_COLUMN_VALUE;
+	
+	/**
+	 * Eine Liste von Warnungen.
+	 */
+	protected List<String> warnings;
+	
+	/**
+	 * Gibt den Kommentar zurück. 
+	 * 
+	 * @return Den Kommentar
+	 * @throws FileNotFoundException Falls keine Datei gefunden wurde
+	 * @throws InputMismatchException Falls Daten nicht korrekt sind
+	 */
+	public abstract String getComment() throws FileNotFoundException;
+	
+	/**
+	 * Gibt den ersten Spielstatus zurück.
+	 * 
+	 * @return Den ersten Spielstatus
+	 * @throws FileNotFoundException Falls keine Datei gefunden wurde
+	 * @throws InputMismatchException Falls Daten nicht korrekt sind
+	 */
+	public abstract GameState getFirstGameState()  throws FileNotFoundException;
+	
+	/**
+	 * Konstruktor.
+	 */
+	public InputReader() {
+		MINIMUM_NUMBER_OF_COLUMNS = 1;
+		MAXIMUM_NUMBER_OF_COLUMNS = 9;
+		MINIMUM_COLUMN_VALUE = 1;
+		MAXIMUM_COLUMN_VALUE = 9;
+		
+		warnings =  new LinkedList<String>();
+	}
+	
+	/**
+	 * Prüft, ob Warnungen vorhanden sind.
+	 * 
+	 * @return true wenn Warnungen vorhanden sind
+	 */
+	public boolean hasWarnings() {
+		return warnings.size() > 0;
+	}
+	
+	
+	/**
+	 * Gibt aufgetretene Warnungen.
+	 * @return Aufgetretene Warnungen oder null, wenn es keine gab
+	 */
+	public List<String> getWarnings() {
+		if(hasWarnings()) {
+			StringBuilder sb = new StringBuilder();
+			
+			for(String w : warnings) {
+				sb.append(w);
+			}
+			return warnings;			
+		} else {
+			return null;
+		}
+	}
+	
+}

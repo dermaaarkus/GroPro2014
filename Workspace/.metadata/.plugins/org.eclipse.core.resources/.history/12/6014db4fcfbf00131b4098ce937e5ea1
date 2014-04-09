@@ -1,0 +1,22 @@
+package view;
+
+import model.PlayerStatistics;
+
+public abstract class OutputWriter {
+	/**
+	 * Schreibt das Ergebnis.
+	 * 
+	 * @param comment Ein Kommentar
+	 * @param player1Statistics Die Statistik des ersten Spielers
+	 * @param player2Statistics Die Statistik des zweiten Spielers
+	 */
+	public abstract void write(String comment,
+			PlayerStatistics player1Statistics,
+			PlayerStatistics player2Statistics);
+	
+	/**
+	 * Schreibt angehängt eine Warnung raus.
+	 * @param warning Die Warnung
+	 */
+	public abstract void appendWarning(String warning);
+}

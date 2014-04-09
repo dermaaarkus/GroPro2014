@@ -1,0 +1,8 @@
+package utility;
+
+import java.io.FileNotFoundException;
+
+public abstract class InputReader {
+	public abstract String getComment() throws FileNotFoundException;
+	public abstract GameState getFirstGameState()  throws FileNotFoundException;
+}

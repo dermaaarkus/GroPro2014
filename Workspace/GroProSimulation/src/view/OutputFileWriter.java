@@ -1,6 +1,6 @@
 package view;
 
-import java.io.File;
+import java.io.*;
 import java.util.List;
 
 import model.GameState;
@@ -9,50 +9,116 @@ import model.PlayerStatistics;
 public class OutputFileWriter extends OutputWriter {
 	private File file;
 	
-	public OutputFileWriter(String path) {
-		this.file = new File(path);
+	/**
+	 * Konstruktor, der die Datei cleared.
+	 * 
+	 * @param path Der Pfad zur Datei
+	 * @throws FileNotFoundException Falls die Datei nicht gefunden werden konnte
+	 */
+	public OutputFileWriter(String path) throws FileNotFoundException {
+		setFile(new File(path));
 	}
 	
-	public OutputFileWriter(File file) {
+	/**
+	 * Konstruktor, der die Datei cleared.
+	 * 
+	 * @param file Die Datei
+	 * @throws FileNotFoundException Falls die Datei nicht gefunden werden konnte
+	 */
+	public OutputFileWriter(File file) throws FileNotFoundException {
+		setFile(file);
+	}
+	
+	/**
+	 * Setzt die Datei und cleared den Inhalt.
+	 * 
+	 * @param file Die Datei
+	 * @throws FileNotFoundException Falls die Datei nicht gefunden werden konnte
+	 */
+	private void setFile(File file) throws FileNotFoundException {
+		if(file.length() > 0) {
+			// clear file
+			new FileOutputStream(file, false);			
+		}
+		
 		this.file = file;
 	}
 	
 	@Override
-	public void write(String comment, PlayerStatistics player1Statistics,
+	public void append(String s) {
+		// write to file
+		Writer writer = null;
+
+		try {
+		    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "utf-8"));
+		    writer.append(s);
+		} catch (IOException ex) {
+			// TODO: besser weiter werfen?
+			System.err.println("IOException: " + ex.getLocalizedMessage());
+		} finally {
+		   try {writer.close();} catch (Exception ex) {}
+		}
+	}
+	
+	@Override
+	public void write(String comment,
+			PlayerStatistics player1Statistics,
 			PlayerStatistics player2Statistics)
 	{
+		// compute numbers
 		int numberOfAllGames = player1Statistics.wonGames + player2Statistics.wonGames;
 		List<GameState> anyGame = (player1Statistics.wonGame != null ? player1Statistics.wonGame : player2Statistics.wonGame);
 		long percentage1 = Math.round((player1Statistics.wonGames * 100.0) / numberOfAllGames);
 		long percentage2 = Math.round((player2Statistics.wonGames * 100.0) / numberOfAllGames);
+		StringBuilder sb = new StringBuilder(comment);
 		
-		// TODO implement writing to file
-		System.out.print(comment);
-		System.out.println("Startverteilung: " + anyGame.get(0));
-		System.out.println("Gewonnene Spiele Spieler 1: " + percentage1 + " %");
-		System.out.println("Gewonnene Spiele Spieler 2: " + percentage2 +  " %");
+		// build string
+		sb.append("Startverteilung: " + anyGame.get(0) + "\n");
+		sb.append("Gewonnene Spiele Spieler 1: " + percentage1 + " %\n");
+		sb.append("Gewonnene Spiele Spieler 2: " + percentage2 + " %\n");
+		sb.append(createExample(1, player1Statistics.wonGame) + "\n");
+		sb.append(createExample(2, player2Statistics.wonGame));
 		
-		writeExample(1, player1Statistics.wonGame);
-		writeExample(2, player2Statistics.wonGame);
+		// write to file
+		Writer writer = null;
 		
+		try {
+		    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "utf-8"));
+		    writer.write(sb.toString());
+		} catch (IOException ex) {
+			// TODO: besser weiter werfen?
+			System.err.println("IOException: " + ex.getLocalizedMessage());
+		} finally {
+		   try {writer.close();} catch (Exception ex) {}
+		}
 	}
 	
-	private void writeExample(int playerNumber, List<GameState> game) {
-		System.out.println("Beispiel eines von Spieler " + playerNumber + " gewonnenen Spiels:");
+	/**
+	 * Erzeugt die Zeilen eines Beispiels.
+	 * 
+	 * @param playerNumber Die Nummer des Gewinners
+	 * @param game Die Spielzüge
+	 * @return Das Beispiel, welches zeilenweise aufgebaut ist
+	 */
+	private String createExample(int playerNumber, List<GameState> game) {
+		StringBuilder sb = new StringBuilder("Beispiel eines von Spieler " + playerNumber + " gewonnenen Spiels:");
 		
 		if(game != null) {
 			String firstState, secondState;
 			
-			for(int count = 1; count < game.size(); ++count)
-			{
-				firstState = game.get(count-1).toString();
-				secondState = game.get(count).toString();
-				playerNumber = (1 + ((count-1) % 2));
-				System.out.println("Zug " + count + ", Spieler " + playerNumber + " : " + firstState + " -> " + secondState);
+			for(int count = 0; count < game.size() - 1; ++count)
+			{	// erstelle alle spielzüge
+				firstState = game.get(count).toString();
+				secondState = game.get(count + 1).toString();
+				playerNumber = (1 + (count % 2));
+				
+				sb.append("\nZug " + String.format("%2d", count) + ", Spieler " + playerNumber + " : " + firstState + " -> " + secondState);
 			}
 		} else {
-			System.out.println("Nicht vorhanden.");
+			sb.append("\nNicht vorhanden.");
 		}
+		
+		return sb.toString();
 	}
 
 }

@@ -1,20 +1,30 @@
 package main;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 
 import controller.Controller;
 
 public class NimGame {
 	public static void main(String[] args) {
-		String in = "resources/input/ihk_example.in";
-		String out = "resources/output/ihk_example.out";
+		String in, out;
+		
+		if(args.length >= 2) { 
+			in = args[0];
+			out = args[1];
+		} else {
+			// TODO: nur zu testzwecken
+			in = "resources/input/ihk_example.in";
+			out = "resources/output/ihk_example.out";
+		}
 		
 		try {
 			Controller c = new Controller(new File(in), new File(out));
 			c.playGames(10);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		} catch(InputMismatchException ime) {
+			// ignore, because the error is already written to view
+		} catch (Exception e) {
+			System.err.println("Exception: " + e.getLocalizedMessage());
 		}
 	}
 }
