@@ -1,0 +1,13 @@
+# Example - Multiple Data Lines
+Startverteilung: (1,2,3)
+Gewonnene Spiele Spieler 1: 100 %
+Gewonnene Spiele Spieler 2: 0 %
+Beispiel eines von Spieler 1 gewonnenen Spiels:
+Zug  0, Spieler 1 : (1,2,3) -> (1,0,3)
+Zug  1, Spieler 2 : (1,0,3) -> (0,0,3)
+Zug  2, Spieler 1 : (0,0,3) -> (0,0,0)
+Beispiel eines von Spieler 2 gewonnenen Spiels:
+Nicht vorhanden.
+
+Warnungen:
+Beim Einlesen wurde mehr als eine Zeile mit Daten gefunden. Es wurde nur mit der ersten  Zeile operiert.

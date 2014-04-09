@@ -58,7 +58,7 @@ public class InputFileReader extends InputReader {
 			if(line.length() > 0 && line.charAt(0) != '#') {
 				if(sc.hasNextLine() && sc.nextLine().length() > 0)
 				{
-					warnings.add("Beim Einlesen wurde mehr als eine Zeile mit Daten gefunden. Es wurde nur mit der ersten Zeile operiert.");
+					warnings.add("Beim Einlesen wurde mehr als eine Zeile mit Daten gefunden. Es wurde nur mit der ersten  Zeile operiert.");
 				}
 				
 				// stoppe, da nun die erste zeile mit daten gefunden worden ist
@@ -72,8 +72,9 @@ public class InputFileReader extends InputReader {
 		{
 			return parseGameStateFromLine(line.trim());
 		} else {
-			throw new InputMismatchException("Bei Einlesen wurden keine Daten gefunden! Die Datei muss eine Zeile mit den Werten der Reihen haben.");
+			throw new InputMismatchException("Bei Einlesen wurden keine Daten gefunden! Die Datei muss eine Zeile mit den Werten Reihen haben.");
 		}
+
 	}
 
 	/**
@@ -122,7 +123,7 @@ public class InputFileReader extends InputReader {
 		}
 		else {
 			throw new InputMismatchException("Bei Einlesen wurden zu viele Reihen gefunden!"
-					+ "Es dürfen nur " + MINIMUM_NUMBER_OF_COLUMNS + " bis " + MAXIMUM_NUMBER_OF_COLUMNS + " enthalten sein");
+					+ "Es dürfen nur " + MINIMUM_NUMBER_OF_COLUMNS + " bis " + MAXIMUM_NUMBER_OF_COLUMNS + "enthalten sein");
 		}
 		
 		return new GameState(resultList);
