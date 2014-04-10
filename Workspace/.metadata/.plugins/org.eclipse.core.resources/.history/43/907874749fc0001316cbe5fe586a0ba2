@@ -5,38 +5,18 @@ import java.util.List;
 import controller.strategy.AbstractStrategy;
 
 public class Player {
-	/**
-	 * Die Statistik des Spielers.
-	 */
 	private PlayerStatistics statistics;
-	/**
-	 * Die Strategie des Spielers.
-	 */
 	private AbstractStrategy strategy;
 	
-	/**
-	 * Konstruktor.
-	 * 
-	 * @param strategy Übergibt dem Spieler eine Strategie, die er anwendet.
-	 */
 	public Player(AbstractStrategy strategy) {
 		this.statistics = new PlayerStatistics();
 		this.strategy = strategy; 
 	}
 
-	/**
-	 * Gibt die Spieler-Statistik. 
-	 * @return Die Statistik
-	 */
 	public PlayerStatistics getStatistics() {
 		return statistics;
 	}
 
-	/**
-	 * Setzt eine neue bzw. ändert die Strategie des Spielers.
-	 * 
-	 * @param strategy Die neue Strategie
-	 */
 	public void setStrategy(AbstractStrategy strategy) {
 		this.strategy = strategy;
 	}

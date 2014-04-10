@@ -5,13 +5,7 @@ import java.util.List;
 import controller.strategy.AbstractStrategy;
 
 public class Player {
-	/**
-	 * Die Statistik des Spielers.
-	 */
 	private PlayerStatistics statistics;
-	/**
-	 * Die Strategie des Spielers.
-	 */
 	private AbstractStrategy strategy;
 	
 	/**

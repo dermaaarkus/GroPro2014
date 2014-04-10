@@ -10,7 +10,7 @@ public class Player {
 	 */
 	private PlayerStatistics statistics;
 	/**
-	 * Die Strategie des Spielers.
+	 * Die Strategie des Spielers
 	 */
 	private AbstractStrategy strategy;
 	

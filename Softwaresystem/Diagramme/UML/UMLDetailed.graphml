@@ -18,7 +18,7 @@
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="104.0" width="329.99999999999966" x="11.25" y="619.0999999999999"/>
+          <y:Geometry height="147.0" width="329.99999999999966" x="11.25" y="610.6240384615384"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="79.841796875" x="125.07910156249983" y="26.701171875">InputReader<y:LabelModel>
@@ -29,9 +29,11 @@
             </y:ModelParameter>
           </y:NodeLabel>
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="abstract" use3DEffect="true">
-            <y:AttributeLabel/>
+            <y:AttributeLabel># warnings: List&lt;String&gt;</y:AttributeLabel>
             <y:MethodLabel>+ getComment(): String
-+ getFirstGameState: GameState</y:MethodLabel>
++ getFirstGameState: GameState
++ hasWarnings(): boolean
++ getWarning(): String</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -40,7 +42,7 @@
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="121.0" width="329.99999999999966" x="11.25" y="753.0999999999999"/>
+          <y:Geometry height="138.60000000000002" width="329.99999999999966" x="11.25" y="806.4799999999998"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="102.236328125" x="113.88183593749983" y="3.0">InputFileReader<y:LabelModel>
@@ -55,7 +57,8 @@
             <y:MethodLabel>c InputFileReader(path: String)
 c InputFileReader(file: File)
 + getComment(): String
-+ getFirstGameState: GameState</y:MethodLabel>
++ getFirstGameState: GameState
+- parseGameStateFromLine(line: String): GameState</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -76,11 +79,10 @@ c InputFileReader(file: File)
           </y:NodeLabel>
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="abstract" use3DEffect="true">
             <y:AttributeLabel/>
-            <y:MethodLabel>c AbstractModel(player1: Player, player2: Player,
-comment: String, firstGameState: GameState)
-+ getPlayer1(): Player
+            <y:MethodLabel>+ getPlayer1(): Player
 + getPlayer2(): Player
 + getComment(): String
++ getWarning(): String
 + getFirstGameState(): GameState</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
@@ -90,7 +92,7 @@ comment: String, firstGameState: GameState)
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="198.082" width="329.99999999999966" x="448.9750000000001" y="247.209"/>
+          <y:Geometry height="219.01533333333333" width="329.99999999999966" x="448.9750000000001" y="249.16799999999998"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="41.552734375" x="144.22363281249983" y="3.0">Model<y:LabelModel>
@@ -104,12 +106,14 @@ comment: String, firstGameState: GameState)
             <y:AttributeLabel>- player1: Player
 - player2: Player
 - comment: String
+- warning: String
 - firstGameState: GameState</y:AttributeLabel>
-            <y:MethodLabel>c Model(player1: Player, player2: Player,
-comment: String, firstGameState: GameState)
+            <y:MethodLabel>c Model(player1: Player, player2: Player, firstGameState:
+GameState, warning: String, comment: String)
 + getPlayer1(): Player
 + getPlayer2(): Player
 + getComment(): String
++ getWarning(): String
 + getFirstGameState(): GameState</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
@@ -119,7 +123,7 @@ comment: String, firstGameState: GameState)
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="85.0" width="330.0" x="868.3833333333334" y="432.44300000000004"/>
+          <y:Geometry height="85.0" width="330.0" x="868.3833333333334" y="418.8333333333326"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="108.75537109375" x="110.622314453125" y="26.701171875">AbstractStrategy<y:LabelModel>
@@ -140,7 +144,7 @@ comment: String, firstGameState: GameState)
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="138.60000000000002" width="329.9999999999999" x="868.3833333333334" y="689.0999999999999"/>
+          <y:Geometry height="149.5" width="329.9999999999999" x="868.3833333333334" y="689.0999999999999"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="74.078125" x="127.96093749999994" y="3.0">MyStrategy<y:LabelModel>
@@ -152,9 +156,12 @@ comment: String, firstGameState: GameState)
           </y:NodeLabel>
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
             <y:AttributeLabel>- possibilities: List&lt;Possibility&gt;</y:AttributeLabel>
-            <y:MethodLabel>&lt;html&gt;+ getNextGameState(gameState: GameState): GameState&lt;br&gt;
+            <y:MethodLabel>&lt;html&gt;
++ getNextGameState(gameState: GameState): GameState&lt;br&gt;
 - &lt;u&gt;countValidColumns&lt;/u&gt;(gameState: GameState): int&lt;br&gt;
 - &lt;u&gt;countOnes&lt;/u&gt;(gameState: GameState): int&lt;br&gt;
+- generatePossibilities(gameState: GameState): void&lt;br&gt;
+- ratePossibilities(): void&lt;br&gt;
 - getBestRatedPossibility(): Possibility
 &lt;/html&gt;</y:MethodLabel>
           </y:UML>
@@ -186,7 +193,7 @@ comment: String, firstGameState: GameState)
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="80.0" width="330.0" x="868.3833333333334" y="553.7180000000001"/>
+          <y:Geometry height="90.4666666666667" width="330.0" x="868.3833333333334" y="551.2333333333329"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="69.01904296875" x="130.490478515625" y="3.0">Possibility<y:LabelModel>
@@ -199,7 +206,7 @@ comment: String, firstGameState: GameState)
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
             <y:AttributeLabel>+ gameState: GameState
 + rating: int</y:AttributeLabel>
-            <y:MethodLabel/>
+            <y:MethodLabel>c Possibility(gameState: GameState)</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -208,7 +215,7 @@ comment: String, firstGameState: GameState)
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="138.6" width="329.9999999999997" x="448.975" y="85.40000000000005"/>
+          <y:Geometry height="162.67333333333335" width="329.9999999999997" x="448.975" y="61.32666666666671"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="71.919921875" x="129.04003906249986" y="3.0">GameState<y:LabelModel>
@@ -221,10 +228,12 @@ comment: String, firstGameState: GameState)
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
             <y:AttributeLabel>- columns: List&lt;Integer&gt;</y:AttributeLabel>
             <y:MethodLabel>c GameState(columns: List&lt;Integer&gt;)
+c GameState(gameState: GameState)
 + getColumns(): List&lt;Integer&gt;
 + changeValueOfColumn(c: int, v int): void
 + numberOfColumns(): int
-+ isFinishState(): boolean</y:MethodLabel>
++ isFinishState(): boolean
++ toString(): String</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -233,7 +242,7 @@ comment: String, firstGameState: GameState)
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="121.0" width="329.9999999999997" x="448.975" y="487.4454999999999"/>
+          <y:Geometry height="121.0" width="329.9999999999997" x="448.975" y="523.0321666666665"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="66.11181640625" x="131.94409179687486" y="3.0">Controller<y:LabelModel>
@@ -257,7 +266,7 @@ comment: String, firstGameState: GameState)
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="121.0" width="329.9999999999998" x="448.975" y="717.5999999999999"/>
+          <y:Geometry height="80.0" width="329.9999999999998" x="448.975" y="717.5999999999999"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="71.919921875" x="129.0400390624999" y="3.0">NimGames<y:LabelModel>
@@ -279,7 +288,7 @@ comment: String, firstGameState: GameState)
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="104.0" width="329.99999999999966" x="11.25" y="294.25"/>
+          <y:Geometry height="115.51333333333338" width="329.99999999999966" x="11.25" y="282.7366666666667"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="84.15185546875" x="122.92407226562483" y="26.701171875">OutputWriter<y:LabelModel>
@@ -289,7 +298,7 @@ comment: String, firstGameState: GameState)
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="-0.03703090122767855" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="162.99999999999983" y="50.0">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="162.99999999999983" y="55.75666666666672">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -300,7 +309,8 @@ comment: String, firstGameState: GameState)
           <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="abstract" use3DEffect="true">
             <y:AttributeLabel/>
             <y:MethodLabel>+ write(comment: String, player1Statistics:
-PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
+PlayerStatistics, player2Statistics: PlayerStatistics): void
++ append(s: String): void</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -309,7 +319,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="122.60000000000002" width="329.99999999999966" x="11.25" y="447.37499999999994"/>
+          <y:Geometry height="147.0" width="329.99999999999966" x="11.25" y="447.375"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="106.54638671875" x="111.72680664062483" y="3.0">OutputFileWriter<y:LabelModel>
@@ -323,8 +333,10 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
             <y:AttributeLabel>- file: File</y:AttributeLabel>
             <y:MethodLabel>c OutputFileWriter(path: String)
 c OutputFileWriter(file: File)
+- setFile(file: File): void
 + write(comment: String, player1Statistics:
-PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
+PlayerStatistics, player2Statistics: PlayerStatistics): void
++ append(s: String): void</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -333,7 +345,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="147.0" width="330.0" x="868.3833333333334" y="249.168"/>
+          <y:Geometry height="147.0" width="330.0" x="868.3833333333334" y="215.8848333333334"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="43.03173828125" x="143.484130859375" y="3.0">Player<y:LabelModel>
@@ -359,7 +371,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="85.0" width="329.99999999999966" x="868.3833333333334" y="112.20000000000005"/>
+          <y:Geometry height="85.0" width="329.99999999999966" x="868.3833333333334" y="61.32666666666671"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="100.83349609375" x="114.58325195312483" y="3.0">PlayerStatistics<y:LabelModel>
@@ -405,7 +417,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
             <y:Point x="1243.3789583333325" y="758.3999999999999"/>
-            <y:Point x="1243.3789583333325" y="474.94300000000004"/>
+            <y:Point x="1243.3789583333325" y="461.3333333333326"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
@@ -419,7 +431,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
             <y:Point x="1267.1289583333325" y="921.3000000000002"/>
-            <y:Point x="1267.1289583333325" y="474.94300000000004"/>
+            <y:Point x="1267.1289583333325" y="461.3333333333326"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
@@ -444,7 +456,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
             <y:Point x="400.87895833333255" y="346.25"/>
-            <y:Point x="400.87895833333255" y="547.9454999999999"/>
+            <y:Point x="400.87895833333255" y="583.5321666666665"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="white_diamond" target="none"/>
@@ -500,7 +512,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-0.004375000000891305" sy="23.581999999999994" tx="0.0" ty="0.0"/>
+          <y:Path sx="-0.004375000000891305" sy="23.581999999999994" tx="8.938333333333162" ty="-45.708833333333246"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="white_diamond" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -523,7 +535,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-65.59604166666736" sy="4.243833333332873" tx="0.0" ty="0.0">
-            <y:Point x="548.3789583333325" y="671.0999999999999"/>
+            <y:Point x="548.3789583333325" y="684.1240384615384"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
@@ -546,7 +558,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="-100.45454545454541" ty="0.0"/>
+          <y:Path sx="15.218333333333135" sy="-38.83666666666667" tx="-100.45454545454541" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="white_diamond" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -557,9 +569,9 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="799.6666666666666" y="467.5"/>
-            <y:Point x="799.6666666666666" y="231.0"/>
+          <y:Path sx="0.0" sy="0.0" tx="-1.528333333333535" ty="34.95666666666662">
+            <y:Point x="799.6666666666666" y="461.3333333333326"/>
+            <y:Point x="799.6666666666666" y="177.62"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>
@@ -571,7 +583,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-65.13824884792615" sy="-25.349999999999998" tx="0.0" ty="0.0">
+          <y:Path sx="-66.4126666666665" sy="-19.593333333333362" tx="0.0" ty="0.0">
             <y:Point x="-34.12104166666745" y="320.9"/>
             <y:Point x="-34.12104166666745" y="35.9393333333328"/>
             <y:Point x="1033.3789583333325" y="35.9393333333328"/>
@@ -586,7 +598,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="78.4782608695651" sy="-31.5" tx="-57.173913043478144" ty="48.80000000000001">
+          <y:Path sx="78.4782608695651" sy="-44.524038461538446" tx="-57.173913043478144" ty="57.27603655603658">
             <y:Point x="380.87895833333255" y="639.5999999999999"/>
             <y:Point x="380.87895833333255" y="203.50000000000006"/>
           </y:Path>
@@ -602,7 +614,7 @@ PlayerStatistics, player2Statistics: PlayerStatistics): void</y:MethodLabel>
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
             <y:Point x="827.4166666666666" y="593.7180000000001"/>
-            <y:Point x="827.4166666666666" y="203.25"/>
+            <y:Point x="827.4166666666666" y="142.66333333333338"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="none"/>

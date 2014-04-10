@@ -1,0 +1,21 @@
+n:NimGame
+c:Controller
+m:Modell
+i:InputReader
+o:OutputWriter
+
+n:n.finde Dateien
+n[1]:c.create
+c:m.create
+c:i.create
+c:gib daten=i.parse Daten
+c:m.setze Daten
+c:o.create
+n:c[c1].play Games(10)
+c:m.gib Player
+[c:loop 10 mal]
+  c[c1]:c[c2].playGame()
+
+[/c]
+
+c[c1]:o.schreibe ergebnisse

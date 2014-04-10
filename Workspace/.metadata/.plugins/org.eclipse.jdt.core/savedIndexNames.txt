@@ -7,7 +7,6 @@ INDEX VERSION 1.126+C:\Users\markus.fassbender\Documents\GitHub\GroPro2014\Works
 739078005.index
 2706502329.index
 728132027.index
-3559808049.index
 2708239607.index
 683184654.index
 1144188029.index
