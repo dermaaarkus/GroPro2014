@@ -34,14 +34,13 @@ public class RandomStrategy extends AbstractStrategy
 			Random randomGenerator = new Random();
 			int columnIndex = 0;
 			
-			do { // suche eine zufällige Reihe != 0
+			do { // suche eine zufällige zeile != 0
 				columnIndex = randomGenerator.nextInt(lastIndexWithNotZeroEntry+1);
 			} while(columns.get(columnIndex) == 0); 
 			
-			// erzeuge einen zufälligen wert
-			int randomValue = 1 + randomGenerator.nextInt(columns.get(columnIndex));
+			int newValue = 1 + randomGenerator.nextInt(columns.get(columnIndex));
 			
-			resultGameState.changeValueOfColumn(columnIndex, columns.get(columnIndex) - randomValue);
+			resultGameState.changeValueOfColumn(columnIndex, columns.get(columnIndex) - newValue); // setze einen zufälligen wert
 		}
 		
 		return resultGameState;

@@ -38,10 +38,9 @@ public class RandomStrategy extends AbstractStrategy
 				columnIndex = randomGenerator.nextInt(lastIndexWithNotZeroEntry+1);
 			} while(columns.get(columnIndex) == 0); 
 			
-			// erzeuge einen zufälligen wert
 			int randomValue = 1 + randomGenerator.nextInt(columns.get(columnIndex));
 			
-			resultGameState.changeValueOfColumn(columnIndex, columns.get(columnIndex) - randomValue);
+			resultGameState.changeValueOfColumn(columnIndex, columns.get(columnIndex) - randomValue); // setze einen zufälligen wert
 		}
 		
 		return resultGameState;

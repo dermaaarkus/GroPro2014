@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="http://structorizer.fisch.lu/" text="&#34;MyStrategy:getNextGameState&#34;,&#34;Eingabe: gameState := aktueller Status&#34;,&#34;Rückgabe: GameState der nächste Status&#34;" comment="&#34;&#34;" color="ffffff" type="program" style="nice">
+	<children>
+		<call text="&#34;generatePossibilities(gameState)&#34;" comment="&#34;&#34;" color="ffffff"></call>
+		<call text="&#34;ratePossibilities()&#34;" comment="" color="ffffff"></call>
+		<call text="&#34;bestPossibility := getBestRatedPossibility()&#34;" comment="" color="ffffff"></call>
+		<instruction text="&#34;gib bestPossibility zurück&#34;" comment="" color="ffffff" rotated="0"></instruction>
+	</children>
+</root>

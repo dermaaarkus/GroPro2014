@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="http://structorizer.fisch.lu/" text="&#34;RandomStrategy:getNextGameState&#34;,&#34;Eingabe: gameState := aktueller Status&#34;,&#34;Rückgabe: GameState der nächste Status&#34;" comment="&#34;&#34;" color="ffffff" type="program" style="nice">
+	<children>
+		<instruction text="&#34;counter := 0&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+		<instruction text="&#34;resultGameState := copy of gameState&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+		<for text="&#34;c := iteriere über alle Reihen von gameState&#34;" comment="&#34;&#34;" color="ffffff">
+			<qFor>
+				<alternative text="&#34;ist der Reihenwert &#60;&#62; 0?&#34;" comment="&#34;&#34;" color="ffffff">
+					<qTrue>
+						<instruction text="&#34;erhöhe counter um 1&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+					</qTrue>
+					<qFalse>
+					</qFalse>
+				</alternative>
+			</qFor>
+		</for>
+		<alternative text="&#34;ist counter 1?&#34;" comment="&#34;&#34;" color="ffffff">
+			<qTrue>
+				<instruction text="&#34;setze in resultGameState den wert&#34;,&#34;an der einzigen Reihe &#60;&#62; 0 auf 0&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+			</qTrue>
+			<qFalse>
+				<instruction text="&#34;columnIndex := suche eine zufällige Reihe &#60;&#62; 0&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+				<instruction text="&#34;randomValue := zufälliger wert zwischen&#34;,&#34;1 und dem wert von columnIndex (inklusiv)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+				<instruction text="&#34;subtrahiere in resultGameState die&#34;,&#34;randomValue vom wert von columnIndex&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+			</qFalse>
+		</alternative>
+		<instruction text="&#34;gibt resultGameState zurück&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+	</children>
+</root>

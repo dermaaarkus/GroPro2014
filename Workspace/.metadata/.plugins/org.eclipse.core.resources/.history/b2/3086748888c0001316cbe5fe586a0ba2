@@ -70,6 +70,10 @@ public class MyStrategy extends AbstractStrategy {
 					}
 				}
 			}
+			
+			
+			
+			
 		}
 	}
 	

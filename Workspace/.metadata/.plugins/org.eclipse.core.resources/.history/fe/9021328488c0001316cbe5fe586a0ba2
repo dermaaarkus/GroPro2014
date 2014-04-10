@@ -55,20 +55,20 @@ public class MyStrategy extends AbstractStrategy {
 				tmpGameState = new GameState(gameState);
 				tmpGameState.changeValueOfColumn(index, 0);
 				possibilities.add(new Possibility(tmpGameState));
-				
-				if(columnValue > 1) {
-					// füge gamestate mit 1 zu den possibilities
-					tmpGameState = new GameState(gameState);
-					tmpGameState.changeValueOfColumn(index, 1);
-					possibilities.add(new Possibility(tmpGameState));
-					
-					if(columnValue > 2) {
-						// füge gamestate mit 2 zu den possibilities
-						tmpGameState = new GameState(gameState);
-						tmpGameState.changeValueOfColumn(index, 2);
-						possibilities.add(new Possibility(tmpGameState));
-					}
-				}
+			}
+			
+			if(columnValue > 1) {
+				// füge gamestate mit 1 zu den possibilities
+				tmpGameState = new GameState(gameState);
+				tmpGameState.changeValueOfColumn(index, 1);
+				possibilities.add(new Possibility(tmpGameState));
+			}
+			
+			if(columnValue > 2) {
+				// füge gamestate mit 2 zu den possibilities
+				tmpGameState = new GameState(gameState);
+				tmpGameState.changeValueOfColumn(index, 2);
+				possibilities.add(new Possibility(tmpGameState));
 			}
 		}
 	}

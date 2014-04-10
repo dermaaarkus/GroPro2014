@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="http://structorizer.fisch.lu/" text="&#34;PlayGames&#34;,&#34;Eingabe: s:= Anzahl Spiele&#34;" comment="&#34;&#34;" color="ffffff" type="program" style="nice">
+	<children>
+		<instruction text="&#34;erstelle leere Liste list&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+		<instruction text="&#34;erstelle Player player&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+		<for text="&#34;laufe von 0 bis (s - 1)&#34;" comment="&#34;&#34;" color="ffffff">
+			<qFor>
+				<call text="&#34;list := playGame()&#34;" comment="&#34;&#34;" color="ffffff"></call>
+				<alternative text="&#34;ist Länge der Liste gerade?&#34;" comment="&#34;&#34;" color="ffffff">
+					<qTrue>
+						<instruction text="&#34;player := model.getPlayer1()&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+					</qTrue>
+					<qFalse>
+						<instruction text="&#34;player := model.getPlayer2()&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+					</qFalse>
+				</alternative>
+				<instruction text="&#34;player.didWinGame()&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+			</qFor>
+		</for>
+		<instruction text="&#34;Ausgabe der Ergebnisse an die View&#34;" comment="&#34;&#34;" color="ffffff" rotated="0"></instruction>
+	</children>
+</root>
