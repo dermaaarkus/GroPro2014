@@ -1,0 +1,149 @@
+package controller.strategy;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.GameState;
+import model.Possibility;
+
+public class MyStrategy extends AbstractStrategy {
+	/**
+	 * Speichert die Möglichkeiten
+	 */
+	private List<Possibility> possibilities;
+	
+	
+	public MyStrategy() {
+		possibilities = new ArrayList<Possibility>();
+	}
+	
+	@Override
+	public GameState getNextGameState(GameState gameState) {
+		super.getNextGameState(gameState);
+		
+		// schritt 1 - möglichkeiten generieren
+		generatePossibilities(gameState);
+		
+		// schritt 2 - möglichkeiten bewerten
+		ratePossibilities();
+		
+		// schritt 3 - die beste möglichkeit finden
+		Possibility bestPossibility = getBestRatedPossibility();
+		
+		return bestPossibility.gameState;
+	} 
+	
+	
+	/**
+	 * Erzeugt die benötigten Möglichkeiten von einem Spielstatus. 
+	 * 
+	 * @param gameState Der Spielstatus
+	 */
+	private void generatePossibilities(GameState gameState) {
+		possibilities.clear();
+		
+		int columnValue = 0;
+		GameState tmpGameState = null;
+		List<Integer> columns = gameState.getColumns();
+		
+		for(int index = 0; index < columns.size(); ++index)
+		{
+			columnValue = columns.get(index);
+			
+			if(columnValue > 0) {
+				// füge gamestate mit 0 zu den possibilities
+				tmpGameState = new GameState(gameState);
+				tmpGameState.changeValueOfColumn(index, 0);
+				possibilities.add(new Possibility(tmpGameState));
+				
+				if(columnValue > 1) {
+					// füge gamestate mit 1 zu den possibilities
+					tmpGameState = new GameState(gameState);
+					tmpGameState.changeValueOfColumn(index, 1);
+					possibilities.add(new Possibility(tmpGameState));
+					
+					if(columnValue > 2) {
+						// füge gamestate mit 2 zu den possibilities
+						tmpGameState = new GameState(gameState);
+						tmpGameState.changeValueOfColumn(index, 2);
+						possibilities.add(new Possibility(tmpGameState));
+					}
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Bewertet alle Möglichkeiten.
+	 */
+	private void ratePossibilities() {
+		int b = 0;
+		int e = 0;
+		
+		for(Possibility p : possibilities) {
+			b = countValidColumns(p.gameState);
+			e = countOnes(p.gameState);
+			
+			if(b % 2 == 0) //ist b gerade?
+			{ 
+				p.rating = (p.gameState.numberOfColumns() - b);
+				p.rating += e;
+			} else {
+				p.rating = (p.gameState.numberOfColumns() - b - 3);
+				p.rating -= e;
+			}
+		}
+	}
+	
+	/**
+	 * Sucht die beste Möglichkeit. Bei mehreren geich guten Möglichkeiten wird die zuerst gefundene ausgewählt.
+	 */
+	private Possibility getBestRatedPossibility() {
+		Possibility bestRatedPossibility = null;
+		
+		for(Possibility p : possibilities) {
+			if(bestRatedPossibility == null
+					|| p.rating > bestRatedPossibility.rating) {
+				bestRatedPossibility = p;
+			}
+		}
+		
+		return bestRatedPossibility;
+	}
+	
+	/**
+	 * Zählt die Anzahl der Reihen eines Spielstatus, die nicht 0 sind.
+	 * 
+	 * @param gameState Der zu analysierende Spielstatus
+	 * @return Die Anzahl der Reihen, die nicht 0 sind
+	 */
+	private static int countValidColumns(GameState gameState) {
+		int counter = 0;
+		
+		for(int i : gameState.getColumns()) {
+			if(i != 0) {
+				++counter;
+			}
+		}
+		
+		return counter;
+	}
+	
+	/**
+	 * Zählt die Anzahl der Reihen eines Spielstatus, die 1 sind.
+	 * 
+	 * @param gameState Der zu analysierende Spielstatus
+	 * @return Die Anzahl der Reihen, die 1 sind
+	 */
+	private static int countOnes(GameState gameState) {
+		int counter = 0;
+		
+		for(int i : gameState.getColumns()) {
+			if(i == 1) {
+				++counter;
+			}
+		}
+		
+		return counter;
+	}	
+}

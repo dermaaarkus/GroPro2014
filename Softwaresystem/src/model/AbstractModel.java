@@ -1,0 +1,33 @@
+package model;
+
+public abstract class AbstractModel {
+	/**
+	 * Gibt den ersten Spieler.
+	 * @return Der erste Spieler
+	 */
+	public abstract Player getPlayer1();
+	
+	/**
+	 * Gibt den zweiten Spieler.
+	 * @return Der zweite Spieler
+	 */
+	public abstract Player getPlayer2();
+	
+	/**
+	 * Gibt den beginnenden Spielstatus.
+	 * @return Der beginnende Spielstatus
+	 */
+	public abstract GameState getFirstGameState();
+	
+	/**
+	 * Gibt den eingelesenden Kommentar.
+	 * @return Der Kommentar
+	 */
+	public abstract String getComment();
+	
+	/**
+	 * Gibt eine Warnung (falls vorhanden).
+	 * @return Die Warnung oder null
+	 */
+	public abstract String getWarning();
+}
