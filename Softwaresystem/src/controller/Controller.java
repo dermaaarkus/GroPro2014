@@ -20,6 +20,7 @@ public class Controller {
 	 * @throws InputMismatchException Falls die Eingabedaten nicht korrigierbare Fehler beinhalten
 	 */
 	public Controller(File inputFile, File outputFile) throws FileNotFoundException {
+		// init
 		Player player1 = new Player(new MyStrategy());
 		Player player2 = new Player(new RandomStrategy());
 		InputFileReader inputFileReader = new InputFileReader(inputFile);
@@ -28,6 +29,7 @@ public class Controller {
 		String comment;
 		GameState gamestate;
 		
+		// try parsing from file
 		try {
 			comment = inputFileReader.getComment();
 			gamestate = inputFileReader.getFirstGameState();
@@ -36,6 +38,7 @@ public class Controller {
 			throw e;
 		}
 		
+		// set model data
 		model = new Model(player1, player2,  gamestate, comment, inputFileReader.getWarning());
 	}
 	
@@ -60,6 +63,7 @@ public class Controller {
 				winningPlayer = model.getPlayer2();
 			}
 			
+			// add to statistics
 			winningPlayer.didWinGame(game);
 		}
 		

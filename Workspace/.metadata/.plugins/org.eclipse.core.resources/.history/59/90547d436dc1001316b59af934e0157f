@@ -1,29 +1,49 @@
 package controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 import controller.strategy.*;
-import view.OutputFileWriter;
+import view.*;
 import model.*;
 
 public class Controller {
 	private AbstractModel model;
-	private OutputFileWriter view;
+	private OutputWriter view;
 	
+	/**
+	 * Erzeugt einen Controller.
+	 * 
+	 * @param inputFile Die Eingabedatei aus der gelesen werden soll
+	 * @param outputFile Die Ausgabedatei in die geschrieben werden soll
+	 * @throws FileNotFoundException Falls eine Datei nicht gefunden wird
+	 * @throws InputMismatchException Falls die Eingabedaten nicht korrigierbare Fehler beinhalten
+	 */
 	public Controller(File inputFile, File outputFile) throws FileNotFoundException {
+		// init
 		Player player1 = new Player(new MyStrategy());
 		Player player2 = new Player(new RandomStrategy());
 		InputFileReader inputFileReader = new InputFileReader(inputFile);
-		
-		model = new Model(player1, player2, inputFileReader.getComment(), inputFileReader.getFirstGameState());
 		view = new OutputFileWriter(outputFile);
+		
+		String comment;
+		GameState gamestate;
+		
+		// try parsing from file
+		try {
+			comment = inputFileReader.getComment();
+			gamestate = inputFileReader.getFirstGameState();
+		} catch(InputMismatchException e) {
+			view.append("Fehler: " + e.getMessage());
+			throw e;
+		}
+		
+		// set data
+		model = new Model(player1, player2,  gamestate, comment, inputFileReader.getWarning());
 	}
 	
 	/**
-	 * Führt eine beliebige Anzahl Spiele durch.
+	 * Führt eine beliebige Anzahl Spiele durch und erstellt eine Statistik.
 	 * 
 	 * @param numberOfGames Die Anzahl der durchzuführenden Spiele
 	 */
@@ -50,6 +70,12 @@ public class Controller {
 		view.write(model.getComment(),
 				model.getPlayer1().getStatistics(),
 				model.getPlayer2().getStatistics());
+		
+		String warning = model.getWarning();
+		
+		if(warning != null) {
+			view.append("\n\n" + warning);			
+		}
 	}
 	
 	
